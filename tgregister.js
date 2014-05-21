@@ -9,11 +9,6 @@ var userButtonClicked = function() {
 	$('.email').focus();
 }
 	
-var signinclicked = function() {
-	$('.signinTab').attr('border-bottom',0);
-	$('.signinTab').attr('background-color',activeColor);
-	$('.signupTab').attr('border-bottom',0);
-}
 
 var reset = function() {
 	$('.input').text().remove();
@@ -48,4 +43,68 @@ $('.cancel').on('click', reset);
 
 //password hover function //CSS
 //myAccount clicked function XXX not needed out of scope
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var signinclicked = function() {
+	$('.signinTab').attr('border-bottom',0);
+	$('.signinTab').attr('background-color',activeColor);
+	$('.signupTab').attr('border-bottom',0);
+}
+
+
+
+
+
 });
