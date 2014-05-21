@@ -4,7 +4,8 @@ $(function() { // call for jQuery
 // function definitions
 // signInClick function
 var userButtonClicked = function() {
-
+	$(".userDialog").show();
+	$(".email").focus();
 }
 
 var reset = function() {
