@@ -12,7 +12,7 @@ var userButtonClicked = function() {
 var signinclicked = function() {
 	$('.signinTab').attr('border-bottom',0);
 	$('.signinTab').attr('background-color',activeColor);
-	$('.signupTab').attr('border-bottom',)
+	$('.signupTab').attr('border-bottom',0);
 }
 	//validate email format/blank
 	//validate password length/not blank
