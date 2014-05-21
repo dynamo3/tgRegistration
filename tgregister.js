@@ -9,10 +9,17 @@ var userButtonClicked = function() {
 	$('.email').focus();
 }
 	
-var signinclicked = function() {
-	$('.signinTab').attr('border-bottom',0);
-	$('.signinTab').attr('background-color',activeColor);
-	$('.signupTab').attr('border-bottom',)
+
+var reset = function() {
+	$('.input').text().remove();
+	$('.signin').show();
+	$('.userDialog').hide();
+}
+
+var forgotPassword = function() {
+	$('.forgotPassword').show();
+	$('.signin').hide();
+	$('signup').hide();
 }
 	//validate email format/blank
 	//validate password length/not blank
@@ -26,10 +33,78 @@ $(".userButton").on('click',userButtonClicked);
 //signin tab clicked ()function
 $(".signin").on('click',signinClicked);
 
+//signin tab clicked ()function
 //signup tab clicked function
 //submit clicked function
 //forgot pw clicked function
-//myAccount clicked function XXX not needed
+$('a.password').on('click', forgotPassword
 //cancel clicked function
-//password hover function
+$('.cancel').on('click', reset);
+
+//password hover function //CSS
+//myAccount clicked function XXX not needed out of scope
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var signinclicked = function() {
+	$('.signinTab').attr('border-bottom',0);
+	$('.signinTab').attr('background-color',activeColor);
+	$('.signupTab').attr('border-bottom',0);
+}
+
+
+
+
+
 });
