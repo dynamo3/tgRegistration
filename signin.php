@@ -23,13 +23,13 @@
 				echo "\n Bad password $email ";
 				echo "</div>\n";
 			}
-		} else { 
-			// notRegistered();
-				echo "<div>\n";
-				echo "\n $email not registered ";
-				echo "</div>\n";
-		}
-
+		// } else { 
+		// 	// notRegistered();
+		// 		echo "<div>\n";
+		// 		echo "\n $email not registered ";
+		// 		echo "</div>\n";
+		// }
+    }
 	}
 
 
