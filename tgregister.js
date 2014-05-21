@@ -96,14 +96,31 @@ $('.cancel').on('click', reset);
 
 
 
-
-var signinclicked = function() {
-	$('.signinTab').attr('border-bottom',0);
-	$('.signinTab').attr('background-color',activeColor);
-	$('.signupTab').attr('border-bottom',0);
+// sign
+var signInClicked = function() {
+	$('.email').text("");
+	$('.password').text("");
+	$('.signIn').show();
+	$('.signInTab').attr('border-bottom',0);
+	$('.signInTab').attr('background-color',activeColor);
+	$('.signUpTab').attr('border-bottom',0);
+	$('.signUpTab').attr('background-color',inactiveColor);
+	$('.email').focus();
 }
 
-
+var signUpClicked = function() {
+	$('.firstName').text("");
+	$('.lastName').text("");
+	$('.age').text("");
+	$('.email').text("");
+	$('.password').text("");
+	$('.signIn').show();
+	$('.signUpTab').attr('border-bottom',0);
+	$('.signUpTab').attr('background-color',activeColor);
+	$('.signInTab').attr('border-bottom',0);
+	$('.signInTab').attr('background-color',inactiveColor);
+	$('.email').focus();
+}
 
 
 
