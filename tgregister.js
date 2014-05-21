@@ -9,9 +9,15 @@ var userButtonClicked = function() {
 }
 
 var reset = function() {
-	$('input').text().remove();
-	$('signin').show();
-	$('userDialog').hide();
+	$('.input').text().remove();
+	$('.signin').show();
+	$('.userDialog').hide();
+}
+
+var forgotPassword = function() {
+	$('.forgotPassword').show();
+	$('.signin').hide();
+	$('signup').hide();
 }
 	//validate email format/blank
 	//validate password length/not blank
@@ -26,11 +32,10 @@ $('.userButton').on('click',userButtonClicked);
 //signup tab clicked function
 //submit clicked function
 //forgot pw clicked function
-//myAccount clicked function XXX not needed
-
+$('a.password').on('click', forgotPassword
 //cancel clicked function
-$('cancel').on('click', reset);
+$('.cancel').on('click', reset);
 
 //password hover function //CSS
-
+//myAccount clicked function XXX not needed out of scope
 });
