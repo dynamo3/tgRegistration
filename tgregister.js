@@ -1,11 +1,17 @@
 $(function() { // call for jQuery
 // variables
-
+var activeColor = "#FF0000"; // active color for the div
 // function definitions
 // signInClick function
 var userButtonClicked = function() {
-	$(".userDialog").show();
-	$(".email").focus();
+	$('.userDialog').show();
+	$('.email').focus();
+}
+	
+var signinclicked = function() {
+	$('.signinTab').attr('border-bottom',0);
+	$('.signinTab').attr('background-color',activeColor);
+	$('.signupTab').attr('border-bottom',)
 }
 	//validate email format/blank
 	//validate password length/not blank
@@ -17,6 +23,8 @@ var userButtonClicked = function() {
 $(".userButton").on('click',userButtonClicked);
 
 //signin tab clicked ()function
+$(".signin").on('click',signinClicked);
+
 //signup tab clicked function
 //submit clicked function
 //forgot pw clicked function
