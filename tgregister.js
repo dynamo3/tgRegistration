@@ -47,18 +47,18 @@ $('.cancel').on('click', reset);
 
 
 
+//Jaylyn's Workspace //
+$('button.submit').on('click', function() {
+	if($('input.email').text() == '') {
+		error();
+	}
+	else {
+	reset();
+	$('header').html('')
+	}
+});
 
-
-
-
-
-
-
-
-
-
-
-
+//error function inserts error message and makes a red box
 
 
 
