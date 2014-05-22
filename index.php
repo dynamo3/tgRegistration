@@ -4,36 +4,40 @@
 
 	$string = file_get_contents("student_data.json"); 
 	$users=json_decode($string,true);
-
+	$password = "";
 	$error_array = array();
 	$error_string = "";
   $reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
+	$email = "";
 	
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	  if (preg_match($reg, $email) === 1){
+	  if (preg_match($reg, $_POST['email']) === 1){
+	  $email = $_POST['email'];
 	  foreach($users as $user) {
 	  	// if (preg_match($reg, $email)) {
-	      if ($user['Email'] == $email) {
-	  			if ($user['Password'] == $password) {
+	      if ($user['Email'] == $_POST['email']) {
+	  			if ($user['Password'] == $_POST['password']) {
 	  				// loggedIn();
-	  				echo "<div>\n";
-	  				echo "\n logged in as $email ";
-	  				echo "</div>\n";
+	  				array_push($error_array, "Congratulations you are logged in as $email");
 	  			}else {
 	  				// badPw();
-	  				echo "<div>\n";
-	  				echo "\n Bad password $email ";
-	  				echo "</div>\n";
+	  				array_push($error_array, "Sorry your password is incorrect");
 	  			 }
+	        }else {
+	        	array_push($error_array, "Unknown user $email");
 	        }
 	      }   
 	    }else{
-	      echo "Please enter a valid email address.";
+	      array_push($error_array, "Please enter a valid email address.");
 	    }
-	}    
+	} 
+
+	if(count($error_array) > 0) {
+		foreach($error_array as $e) {
+			$error_string = $error_string . $e . "<br>"; 
+		} 
+	}
 	
 
 
@@ -68,12 +72,12 @@
 <div class="userSignIn">
 	<div>
 		<form action="index.php" method="POST">
-			Email<input type="text" placeholder="email" name="email"><br>
+			Email<input type="text" placeholder="email" name="email" value="<?php echo $email ?>"><br>
 			Password<input type="password" placeholder="password" name="password"><br>
 			<button>Cancel</button><button type="submit">Submit</button>
 			<a href="#">Forgot password?</a>	
 		</form>	
-		<div class="errorOut"><?php  print_r($error_array)?></div>
+		<div class="errorOut"><?php  print_r($error_string)?></div>
 	</div>
 </div>
 
