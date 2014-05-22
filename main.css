@@ -3,6 +3,14 @@
 	padding: 0;
 }
 
+
+
+.mainContainer {
+	width: 1000px;
+	background-color: brown;
+	margin: auto;
+}
+
 header .userNav {
 	background-color: lightblue;
 }
@@ -17,6 +25,14 @@ header .subContainer {
 	position: absolute;
 	top: 0px;
 	right: 10px;
+}
+
+.userPopUp {
+	display: none;
+}
+
+.contentContainer {
+	background-color: yellow;
 }
 
 /*.welcome {
