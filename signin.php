@@ -10,7 +10,9 @@
 	$email = $_GET['email'];
 	$password = $_GET['password'];
   $reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
-	if (preg_match($reg, $email) === 1){
+	
+
+  if (preg_match($reg, $email) === 1){
   foreach($users as $user) {
   	// if (preg_match($reg, $email)) {
       if ($user['Email'] == $email) {
