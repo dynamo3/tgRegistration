@@ -9,28 +9,28 @@
 	$error_string = "";
 	$email = $_GET['email'];
 	$password = $_GET['password'];
-
-	foreach($users as $user) {
-		if ($user['Email'] == $email) {
-			if ($user['Password'] == $password) {
-				// loggedIn();
-				echo "<div>\n";
-				echo "\n logged in as $email ";
-				echo "</div>\n";
-			} else {
-				// badPw();
-				echo "<div>\n";
-				echo "\n Bad password $email ";
-				echo "</div>\n";
-			}
-		// } else { 
-		// 	// notRegistered();
-		// 		echo "<div>\n";
-		// 		echo "\n $email not registered ";
-		// 		echo "</div>\n";
-		// }
+  $reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
+	if (preg_match($reg, $email) === 1){
+  foreach($users as $user) {
+  	// if (preg_match($reg, $email)) {
+      if ($user['Email'] == $email) {
+  			if ($user['Password'] == $password) {
+  				// loggedIn();
+  				echo "<div>\n";
+  				echo "\n logged in as $email ";
+  				echo "</div>\n";
+  			}else {
+  				// badPw();
+  				echo "<div>\n";
+  				echo "\n Bad password $email ";
+  				echo "</div>\n";
+  			 }
+        }
+      }   
+    }else{
+      echo "Please enter a valid email address.";
     }
-	}
+	
 
 
  ?>
