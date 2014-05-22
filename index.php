@@ -25,7 +25,7 @@
 	  				array_push($error_array, "Sorry your password is incorrect");
 	  			 }
 	        }else {
-	        	array_push($error_array, "Unknown user $email");
+	        
 	        }
 	      }   
 	    }else{
