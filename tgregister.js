@@ -9,11 +9,6 @@ var userButtonClicked = function() {
 	$('.email').focus();
 }
 	
-var signinclicked = function() {
-	$('.signinTab').attr('border-bottom',0);
-	$('.signinTab').attr('background-color',activeColor);
-	$('.signupTab').attr('border-bottom',)
-}
 
 var reset = function() {
 	$('.input').text().remove();
@@ -48,4 +43,85 @@ $('.cancel').on('click', reset);
 
 //password hover function //CSS
 //myAccount clicked function XXX not needed out of scope
+
+
+
+
+//Jaylyn's Workspace //
+$('button.submit').on('click', function() {
+	if($('input.email').text() == '') {
+		error();
+	}
+	else {
+	reset();
+	$('header').html('')
+	}
+});
+
+//error function inserts error message and makes a red box
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// sign
+var signInClicked = function() {
+	$('.email').text("");
+	$('.password').text("");
+	$('.signIn').show();
+	$('.signInTab').attr('border-bottom',0);
+	$('.signInTab').attr('background-color',activeColor);
+	$('.signUpTab').attr('border-bottom',0);
+	$('.signUpTab').attr('background-color',inactiveColor);
+	$('.email').focus();
+}
+
+var signUpClicked = function() {
+	$('.firstName').text("");
+	$('.lastName').text("");
+	$('.age').text("");
+	$('.email').text("");
+	$('.password').text("");
+	$('.signIn').show();
+	$('.signUpTab').attr('border-bottom',0);
+	$('.signUpTab').attr('background-color',activeColor);
+	$('.signInTab').attr('border-bottom',0);
+	$('.signInTab').attr('background-color',inactiveColor);
+	$('.email').focus();
+}
+
+
+
 });
