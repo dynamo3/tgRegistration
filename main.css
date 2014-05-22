@@ -1,0 +1,26 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header .userNav {
+	background-color: lightblue;
+}
+
+header .subContainer {
+	background-color: #b2b2b2;
+	min-height: 70px;
+}
+
+/*Upper right each page either have .userButton or .welcome*/
+.userButton {
+	position: absolute;
+	top: 0px;
+	right: 10px;
+}
+
+/*.welcome {
+	position: absolute;
+	top: 0px;
+	right: 10px;
+}*/
