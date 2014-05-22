@@ -4,33 +4,33 @@
 
 	$string = file_get_contents("student_data.json"); 
 	$users=json_decode($string,true);
-	$password = "";
 	$error_array = array();
 	$error_string = "";
   $reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
 	$email = "";
 	
-
+//on loads other than the first
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	 //is this an email address
 	  if (preg_match($reg, $_POST['email']) === 1){
 	  $email = $_POST['email'];
 	  foreach($users as $user) {
-	  	// if (preg_match($reg, $email)) {
-	      if ($user['Email'] == $_POST['email']) {
-	  			if ($user['Password'] == $_POST['password']) {
-	  				// loggedIn();
-	  				array_push($error_array, "Congratulations you are logged in as $email");
-	  			}else {
-	  				// badPw();
-	  				array_push($error_array, "Sorry your password is incorrect");
-	  			 }
-	        }else {
-	        
-	        }
-	      }   
-	    }else{
-	      array_push($error_array, "Please enter a valid email address.");
-	    }
+      //match email and then password
+      if ($user['Email'] == $_POST['email']) {
+  			if ($user['Password'] == $_POST['password']) {
+  				// loggedIn() FIX: Change page state
+  				array_push($error_array, "Congratulations you are logged in as $email");
+  			}else {
+  				// badPw();
+  				array_push($error_array, "Sorry your password is incorrect");
+  			 }
+        }else {
+        //valid but unregistered email.  FIX: Redirect to Sign-Up?
+        }
+    }   
+	  }else{
+	    array_push($error_array, "Please enter a valid email address.");
+	   }
 	} 
 
 	if(count($error_array) > 0) {
