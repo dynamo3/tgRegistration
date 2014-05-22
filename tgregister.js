@@ -12,14 +12,14 @@ var userButtonClicked = function() {
 
 var reset = function() {
 	$('.input').text().remove();
-	$('.signin').show();
-	$('.userDialog').hide();
+	$('.userSignIn').show();
+	$('.userPopUp').hide();
 }
 
 var forgotPassword = function() {
 	$('.forgotPassword').show();
-	$('.signin').hide();
-	$('signup').hide();
+	$('.signIn').hide();
+	$('.signUp').hide();
 }
 	//validate email format/blank
 	//validate password length/not blank
@@ -28,10 +28,10 @@ var forgotPassword = function() {
 //event handlers
 
 //signin/up button clicked (signInClicked)
-$(".userButton").on('click',userButtonClicked);
+$('.userButton').on('click',userButtonClicked);
 
 //signin tab clicked ()function
-$(".signin").on('click',signinClicked);
+$('.signIn').on('click',signinClicked);
 
 //signin tab clicked ()function
 //signup tab clicked function
@@ -48,15 +48,15 @@ $('.cancel').on('click', reset);
 
 
 //Jaylyn's Workspace //
-$('button.submit').on('click', function() {
-	if($('input.email').text() == '') {
-		error();
-	}
-	else {
-	reset();
-	$('header').html('')
-	}
-});
+// $('button.submit').on('click', function() {
+// 	if($('input.email').text() == '') {
+// 		error();
+// 	}
+// 	else {
+// 	reset();
+// 	$('header').html('')
+// 	}
+// });
 
 //error function inserts error message and makes a red box
 
@@ -100,26 +100,21 @@ $('button.submit').on('click', function() {
 var signInClicked = function() {
 	$('.email').text("");
 	$('.password').text("");
-	$('.signIn').show();
-	$('.signInTab').attr('border-bottom',0);
-	$('.signInTab').attr('background-color',activeColor);
-	$('.signUpTab').attr('border-bottom',0);
-	$('.signUpTab').attr('background-color',inactiveColor);
+	$('.userSignIn').show();
+	$('.signInTab').addClass('.active');
+	$('.signUpTab').removeClass('.active');
 	$('.email').focus();
 }
 
 var signUpClicked = function() {
 	$('.firstName').text("");
 	$('.lastName').text("");
-	$('.age').text("");
 	$('.email').text("");
 	$('.password').text("");
 	$('.signIn').show();
-	$('.signUpTab').attr('border-bottom',0);
-	$('.signUpTab').attr('background-color',activeColor);
-	$('.signInTab').attr('border-bottom',0);
-	$('.signInTab').attr('background-color',inactiveColor);
-	$('.email').focus();
+	$('.signUpTab').addClass('.active');
+	$('.signInTab').removeClass('.active');
+	$('.firstName').focus();
 }
 
 
