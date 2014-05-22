@@ -7,31 +7,33 @@
 
 	$error_array = array();
 	$error_string = "";
-	$email = $_GET['email'];
-	$password = $_GET['password'];
   $reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
 	
 
-  if (preg_match($reg, $email) === 1){
-  foreach($users as $user) {
-  	// if (preg_match($reg, $email)) {
-      if ($user['Email'] == $email) {
-  			if ($user['Password'] == $password) {
-  				// loggedIn();
-  				echo "<div>\n";
-  				echo "\n logged in as $email ";
-  				echo "</div>\n";
-  			}else {
-  				// badPw();
-  				echo "<div>\n";
-  				echo "\n Bad password $email ";
-  				echo "</div>\n";
-  			 }
-        }
-      }   
-    }else{
-      echo "Please enter a valid email address.";
-    }
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	  if (preg_match($reg, $email) === 1){
+	  foreach($users as $user) {
+	  	// if (preg_match($reg, $email)) {
+	      if ($user['Email'] == $email) {
+	  			if ($user['Password'] == $password) {
+	  				// loggedIn();
+	  				echo "<div>\n";
+	  				echo "\n logged in as $email ";
+	  				echo "</div>\n";
+	  			}else {
+	  				// badPw();
+	  				echo "<div>\n";
+	  				echo "\n Bad password $email ";
+	  				echo "</div>\n";
+	  			 }
+	        }
+	      }   
+	    }else{
+	      echo "Please enter a valid email address.";
+	    }
+	}    
 	
 
 
@@ -65,12 +67,13 @@
 
 <div class="userSignIn">
 	<div>
-		<form action="" method="">
-			Email<input type="text" placeholder="email"><br>
-			Password<input type="password" placeholder="password"><br>
+		<form action="index.php" method="POST">
+			Email<input type="text" placeholder="email" name="email"><br>
+			Password<input type="password" placeholder="password" name="password"><br>
 			<button>Cancel</button><button type="submit">Submit</button>
 			<a href="#">Forgot password?</a>	
 		</form>	
+		<div class="errorOut"><?php  print_r($error_array)?></div>
 	</div>
 </div>
 
