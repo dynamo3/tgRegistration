@@ -3,40 +3,193 @@
 	padding: 0;
 }
 
-
-
+body {
+	/*background-image: url("mooning_@2X.png");*/
+	
+}
+/***Wraps whole page***/
 .mainContainer {
-	width: 1000px;
-	background-color: brown;
+	/*position: relative;*/
+	width: 100%;
 	margin: auto;
+	border: 1px solid #DFD7E8;
 }
 
-header .userNav {
-	background-color: lightblue;
+/***Header sections***/
+header {
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 35px;
+	box-sizing: border-box;
 }
 
-header .subContainer {
-	background-color: #b2b2b2;
-	min-height: 70px;
+.contactNav {
+	min-height: 35px;
+	font-size: 1.3em;
+	letter-spacing: 1px;
+	color: #474747;
+	padding: 5px 0px 0px 10px;
 }
 
-/*Upper right each page either have .userButton or .welcome*/
-.userButton {
+/*Upper right each page either have .userButton or .welcome - controlled by JS*/
+.userNav {
+	/*overflow: hidden;*/
+	min-height: 35px;
+	width: 300px;
 	position: absolute;
 	top: 0px;
 	right: 10px;
+	padding: 3px 3px;
 }
 
+.userButton {
+	min-height: 35px;
+	position: absolute;
+	top: 0px;
+	right: 15px;
+	font-size: 1.3em;
+	letter-spacing: 1px;
+	color: #474747;
+	padding: 5px 5px;
+}
+
+.userButton span {
+	font-size: 1em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #474747;
+	padding: 5px 0px 0px 10px;
+}
+
+.userButton button {
+	font-size: 1em;
+	letter-spacing: 1px;
+	color: #474747;
+	padding: 5px 10px 0px 10px;
+	margin-left: 10px;
+}
+
+.welcome {
+	display: none;
+	position: absolute;
+	top: 0px;
+	right: 15px;
+	font-size: 1.2em;
+	letter-spacing: 1px;
+	color: #474747;
+}
+
+/***Inside the lower part of the Header section***/
+.subContainer {
+	position: relative;
+	overflow: hidden;
+	background-color: #02406e;
+	/*background-color: #0593bc;*/
+	/*background-color: #1b5c67;*/
+	height: 110px;
+	box-sizing: border-box;
+}
+
+.subContainerNav {
+	overflow: hidden;
+	width: 850px;
+	margin-right: 5px;
+	box-sizing: border-box;
+	position: absolute;
+	top: 45px;
+	right: 20px;
+}
+
+#logo {
+	float: left;
+	margin: 5px 20px;
+}
+
+.subContainerNav a {
+	display: block;
+	float: right;
+	padding: 0px 15px;
+	margin: 0px 15px;
+	text-transform: uppercase;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.5em;
+	letter-spacing: 1px;
+}
+/*Need to clean this up*/
+.subContainerNav a:link {color:#FFFFFF;}    
+.subContainerNav a:visited {color:#FFFFFF;} 
+.subContainerNav a:hover {color:#e22422;}   
+.subContainerNav a:active {color:#0593bc;}  
+
+
+/*This is hidden until user clicks on Log In/ Sign Up button*/
 .userPopUp {
 	display: none;
 }
 
-.contentContainer {
-	background-color: yellow;
+.userSignUp {
+	display: none;
 }
 
-/*.welcome {
-	position: absolute;
-	top: 0px;
-	right: 10px;
-}*/
+/***Main content section - inbetween header and footer***/
+.contentContainer {
+	width: 90%;
+	margin: auto;
+	overflow: hidden;
+}
+
+aside {
+	background-color: #F6F6F6;
+	float: left;
+	min-width: 250px;
+	min-height: 500px;
+	border-top: 3px #02406e solid;
+	/*border-radius: 5px;*/
+	padding: 5px 5px;
+	font-size: 1.5em;
+	letter-spacing: 1px;
+}
+
+aside ul {
+	list-style-type: none;
+	text-transform: uppercase;
+}
+
+aside a {
+	text-decoration: none;
+}
+
+.asideLinks a:link {color:#e22422;}    
+.asideLinks a:visited {color:#e22422;} 
+.asideLinks a:hover {color:#02406e;}   
+.asideLinks a:active {color:#0000FF;}  
+
+.contentContainer p {
+	margin-left: 300px;
+	/*border-top: 3px #02406e solid;*/
+	/*border-radius: 5px;*/
+	padding: 5px 5px;
+}
+
+.contentContainer p:nth-child(2) {
+	border-top: 3px #02406e solid;
+	/*border-radius: 5px;*/
+}
+
+/***Footer***/
+footer {
+	width: 100%;
+	margin: auto;
+	min-height: 170px;
+	color: white;
+	font-size: 1.4em;
+	letter-spacing: 1px;
+	background-image: url("atg-running-man-960x200.jpg");
+}
+
+footer div {
+	text-align: right;
+	padding: 15px 10px;
+}
+
