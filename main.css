@@ -126,6 +126,18 @@ header {
 /*This is hidden until user clicks on Log In/ Sign Up button*/
 .userPopUp {
 	display: none;
+	/*position: absolute;*/
+	/*top: 50;
+	right: 50;*/
+	float: right;
+	width: 400px;
+	height: 500px;
+	background-image: url(mooning_@2X.png);
+	background-size: cover;
+	font-size: 2em;
+	letter-spacing: 1px;
+	color: #474747;
+
 }
 
 .userSignUp {
