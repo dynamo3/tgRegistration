@@ -62,8 +62,8 @@
 				  if ($loggedIn){
 				    echo "<div class='welcome'>
   				          <p>Welcome
-  				            <a href='#'class='userName'><?php echo $email ?></a> Not 
-  				            <a href='#'class='nonUser'><?php echo $email ?></a>?
+  				            <a href='#'class='userName'> $email </a> Not 
+  				            <a href='#'class='nonUser'> $email </a>?
   				            <button class='signOut'>Sign Out</button>
   				          </p>
   				        </div>";
