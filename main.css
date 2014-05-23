@@ -70,7 +70,7 @@ header {
 }
 
 .welcome {
-	display: none;
+	/*display: none;*/
 	position: absolute;
 	top: 0px;
 	right: 15px;

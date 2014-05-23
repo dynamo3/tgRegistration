@@ -8,7 +8,8 @@
 	$error_string = "";
   $reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
 	$email = "";
-	
+	$loggedIn = false;
+
 //on loads other than the first
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	 //is this an email address
@@ -20,6 +21,7 @@
   			if ($user['Password'] == $_POST['password']) {
   				// loggedIn() FIX: Change page state
   				array_push($error_array, "Congratulations you are logged in as $email");
+  				$loggedIn = true;
   			}else {
   				// badPw();
   				array_push($error_array, "Sorry your password is incorrect");
@@ -46,7 +48,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Register for Avnet Games</title>
 	<link rel="stylesheet" href="main.css">
 </head>
 
@@ -56,18 +58,23 @@
 		<header>
 			<div class="contactNav">(480) 643-7657</div>
 			<div class="userNav">
-				<div class="userButton">
-					<div>
-						<span>user</span><button>Sign In / Sign Up</button></div>
-				</div>	
-
-				<div class="welcome">
-					<p>Welcome
-						<a href="#"class="userName"> User </a> Not 
-						<a href="#"class="nonUser">User</a>?
-						<button class="signOut">Sign Out</button>
-					</p>
-				</div>
+				<?php 
+				  if ($loggedIn){
+				    echo "<div class='welcome'>
+  				          <p>Welcome
+  				            <a href='#'class='userName'><?php echo $email ?></a> Not 
+  				            <a href='#'class='nonUser'><?php echo $email ?></a>?
+  				            <button class='signOut'>Sign Out</button>
+  				          </p>
+  				        </div>";
+				  }else {
+				    echo "<div class='userButton'>
+				          <div>
+				            <span>user</span><button>Sign In / Sign Up</button>
+				          </div>
+				        </div>  ";
+				  }
+				?>
 			</div>
 
 			<div class="subContainer">
@@ -91,12 +98,14 @@
 
 			<div class="userSignIn">
 				<div>
-					<form action="" method="">
-						Email<input class="email" type="text" placeholder="email"><br>
-						Password<input class="password" type="password" placeholder="password"><br>
+					<form action="index.php" method="POST">
+						Email<input class="email" type="text" placeholder="email" name="email" value="<?php echo $email ?>"><br>
+						Password<input class="password" type="password" placeholder="password" name="password"><br>
 						<button type="button" class="cancelButton">Cancel</button><button class="submitButton" type="submit">Submit</button>
 						<a href="#">Forgot password?</a>	
 					</form>	
+					<div class="error"><?php print_r($error_string); ?></div>
+
 				</div>
 			</div>
 
