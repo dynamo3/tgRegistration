@@ -12,49 +12,35 @@
 	$registered = false;
 
 //on loads other than the first
-if ($_SERVER['REQUEST_METHOD'] == 'POST') 
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	//is this an email address
-	if (preg_match($reg, $_POST['email']) === 1)
-	{
+	if (preg_match($reg, $_POST['email']) === 1){
 		$email = $_POST['email'];
-	  	foreach($users as $user) 
-	  	{
+	  	foreach($users as $user) {
     		//match email and then password
-      		if ($user['Email'] == $_POST['email']) 
-      		{
-      			$registered = true; // Set flag: yes, user in DB.
-  				if ($user['Password'] == $_POST['password'])
-  				{
-  					// loggedIn() FIX: Change page state
-  					array_push($error_array, "Congratulations you are logged in as $email");
-  					$loggedIn = true; // says found in DB by email & entered correct pswd.
-  				}
-  				else
-  				{
+    		if ($user['Email'] == $_POST['email']){
+    			$registered = true; // Set flag: yes, user in DB.
+				  if ($user['Password'] == $_POST['password']){
+    				// loggedIn()
+    				array_push($error_array, "Congratulations you are logged in as $email");
+    				$loggedIn = true; // says found in DB by email & entered correct pswd.
+				  }else {
   					// badPw();
   					array_push($error_array, "Sorry your password is incorrect");
-  				}
-        	}
+				  }
+      	}
     	} // end of for
 
-    	// check if user was in database (ie: registered)
-    	if ($registered != true)
-    	{
-    		array_push($error_array, "Please click signup button");
-    		//valid but unregistered email.  FIX: Redirect to Sign-Up?
-		}
-	}
-	else
-	{
-		array_push($error_array, "Please enter a valid email address.");
-	}
+  	// check if user was in database (ie: registered)
+  	if ($registered != true){
+  		array_push($error_array, "Please click signup button");
+  		//valid but unregistered email.  FIX: Redirect to Sign-Up?
+	  }
+  }
 } 
 
-if(count($error_array) > 0)
-{
-	foreach($error_array as $e)
-	{
+if(count($error_array) > 0) {
+	foreach($error_array as $e) {
 		$error_string = $error_string . $e . "<br>"; 
 	} 
 }
@@ -76,23 +62,7 @@ if(count($error_array) > 0)
 		<header>
 			<div class="contactNav">(480) 643-7657</div>
 			<div class="userNav">
-				<?php 
-				  if ($loggedIn){
-				    echo "<div class='welcome'>
-  				          <p>Welcome
-  				            <a href='#'class='userName'> $email </a> Not 
-  				            <a href='#'class='nonUser'> $email </a>?
-  				            <button class='signOut'>Sign Out</button>
-  				          </p>
-  				        </div>";
-				  }else {
-				    echo "<div class='userButton'>
-				          <div>
-				            <span>user</span><button>Sign In / Sign Up</button>
-				          </div>
-				        </div>  ";
-				  }
-				?>
+				<?php require 'loginstate.php';?>
 			</div>
 
 			<div class="subContainer">
@@ -122,8 +92,8 @@ if(count($error_array) > 0)
 						<button type="button" class="cancelButton">Cancel</button><button class="submitButton" type="submit">Submit</button>
 						<a href="#">Forgot password?</a>	
 					</form>	
-					<div class="error"><?php print_r($error_string); ?></div>
-
+					<div class="error"></div>
+          <div class="phperror"><?php print_r($error_string); echo "$loggedIn"; ?></div>
 				</div>
 			</div>
 
@@ -132,7 +102,7 @@ if(count($error_array) > 0)
 					<form action="" method="#">
 						First Name<input class="firstName" type="text" placeholder="first name"><br>
 						Last Name<input class="lastName" type="text" placeholder="last name"><br>
-						Email<input class="email" type="text" placeholder="email"><br>
+						Email<input class="email" type="text" placeholder="email" value="<?php echo $email ?>"><br>
 						Password<input class="password" type="password" placeholder="password"><br>
 						<button type="button" class="cancelButton">Cancel</button><button class="submitButton" type="submit">Submit</button>
 					</form>	
