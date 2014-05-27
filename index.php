@@ -2,48 +2,49 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 'on');
 
-	$string = file_get_contents("student_data.json"); 
-	$users=json_decode($string,true);
+	// $string = file_get_contents("student_data.json"); 
+	// $users=json_decode($string,true);
 	$error_array = array();
 	$error_string = "";
-  	$reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
+  $reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
 	$email = "";
 	$loggedIn = false;
 	$registered = false;
 
-//on loads other than the first
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	//is this an email address
-	if (preg_match($reg, $_POST['email']) === 1){
-		$email = $_POST['email'];
-	  	foreach($users as $user) {
-    		//match email and then password
-    		if ($user['Email'] == $_POST['email']){
-    			$registered = true; // Set flag: yes, user in DB.
-				  if ($user['Password'] == $_POST['password']){
-    				// loggedIn()
-    				array_push($error_array, "Congratulations you are logged in as $email");
-    				$loggedIn = true; // says found in DB by email & entered correct pswd.
-				  }else {
-  					// badPw();
-  					array_push($error_array, "Sorry your password is incorrect");
-				  }
-      	}
-    	} // end of for
+  require 'signin.php';
+  // //on loads other than the first
+  // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  // 	//is this an email address
+  // 	if (preg_match($reg, $_POST['email']) === 1){
+  // 		$email = $_POST['email'];
+  // 	  	foreach($users as $user) {
+  //     		//match email and then password
+  //     		if ($user['Email'] == $_POST['email']){
+  //     			$registered = true; // Set flag: yes, user in DB.
+  // 				  if ($user['Password'] == $_POST['password']){
+  //     				// loggedIn()
+  //     				array_push($error_array, "Congratulations you are logged in as $email");
+  //     				$loggedIn = true; // says found in DB by email & entered correct pswd.
+  // 				  }else {
+  //   					// badPw();
+  //   					array_push($error_array, "Sorry your password is incorrect");
+  // 				  }
+  //       	}
+  //     	} // end of for
 
-  	// check if user was in database (ie: registered)
-  	if ($registered != true){
-  		array_push($error_array, "Please click signup button");
-  		//valid but unregistered email.  FIX: Redirect to Sign-Up?
-	  }
-  }
-} 
+  //   	// check if user was in database (ie: registered)
+  //   	if ($registered != true){
+  //   		array_push($error_array, "Please click signup button");
+  //   		//valid but unregistered email.  FIX: Redirect to Sign-Up?
+  // 	  }
+  //   }
+  // } 
 
-if(count($error_array) > 0) {
-	foreach($error_array as $e) {
-		$error_string = $error_string . $e . "<br>"; 
-	} 
-}
+  // if(count($error_array) > 0) {
+  // 	foreach($error_array as $e) {
+  // 		$error_string = $error_string . $e . "<br>"; 
+  // 	} 
+  // }
 	
 
 

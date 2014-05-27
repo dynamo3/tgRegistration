@@ -1,38 +1,40 @@
 <?php 
 	error_reporting(E_ALL);
-	ini_set('display_errors', 'on');
-
-	$string = file_get_contents("student_data.json"); 
-	$users=json_decode($string,true);
-
-	$error_array = array();
-	$error_string = "";
-	$email = $_GET['email'];
-	$password = $_GET['password'];
+  ini_set('display_errors', 'on');
+  require 'dbconnect.php';
+  $error_array = array();
+  $error_string = "";
   $reg = '/^[a-zA-Z-_.+]+@[a-zA-Z-_.+]+\.[a-z]{2,6}\.?[a-z]+/';
-	
+  $email = "";
+  $loggedIn = false;
 
-  if (preg_match($reg, $email) === 1){
-  foreach($users as $user) {
-  	// if (preg_match($reg, $email)) {
-      if ($user['Email'] == $email) {
-  			if ($user['Password'] == $password) {
-  				// loggedIn();
-  				echo "<div>\n";
-  				echo "\n logged in as $email ";
-  				echo "</div>\n";
-  			}else {
-  				// badPw();
-  				echo "<div>\n";
-  				echo "\n Bad password $email ";
-  				echo "</div>\n";
-  			 }
-        }
-      }   
-    }else{
-      echo "Please enter a valid email address.";
+//on loads other than the first
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  //is this an email address
+  if (preg_match($reg, $_POST['email']) === 1){
+    $email = $_POST['email'];
+    $result = $mysqli->query("SELECT * FROM user WHERE email = 'bill@gmail.com'");
+    $result = $result->fetch_assoc();
+
+    //match email and then password
+    if ($result['email'] == $_POST['email']){
+      if ($result['password'] == $_POST['password']){
+        // loggedIn()
+        array_push($error_array, "Congratulations you are logged in as $email");
+        $loggedIn = true; // says found in DB by email & entered correct pswd.
+      }else {
+        // badPw();
+        array_push($error_array, "Sorry your password is incorrect");
+      }
+    }else {
+      array_push($error_array, "Please click signup button");
     }
-	
+  }
+} 
 
-
+if(count($error_array) > 0) {
+  foreach($error_array as $e) {
+    $error_string = $error_string . $e . "<br>"; 
+  } 
+}
  ?>
